@@ -1,6 +1,7 @@
 all:
-	javac ./src/*.java
-	java -cp src Start 
+	javac -d bin ./src/*/*.java
+	java -cp bin avaj.Start 
 
 clean:
-	rm -rf src/*.class
+	rm -rf bin/*/*.class
+	rm -rf bin

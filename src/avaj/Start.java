@@ -1,13 +1,12 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.Vector;
+package avaj; //le default ca equivaut a rien mettre (ca correspond a src/)
+
+import java.util.List;
 
 public class Start{
 	public static void main(String[] arg) {
 		System.out.printf("Hello World!\n");
-		Vector<String> tab = ReadFile.readFile("scenario.txt");
-		int repet = Integer.parseInt(tab.elementAt(0));
+		List<String> tab = HandleFile.GetFile("scenario.txt"); // a changer car on doit pouvoir mettre le fichier qu'on veut
+		int repet = Integer.parseInt(tab.get(0));
 		System.out.println("////////////////////////////");
 		System.out.println(repet + " repetitions pour le programme");
 	}
@@ -127,25 +126,5 @@ class WeatherProvider {
 
 	public String getCurrentWeather(Coordinates p_coordinates) {
 		return (weather[0]);
-	}
-}
-
-class ReadFile {
-	public  static Vector<String> readFile(String nameFile)
-	{
-		File file = new File(nameFile);
-		Vector<String> tab = new Vector<String>();
-		try (Scanner reader = new Scanner(file)){
-			while (reader.hasNextLine())
-			{
-				String data = reader.nextLine();
-				tab.add(data);
-				// System.out.println(data); //print tout le fichier
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("Error: readfile");
-			e.printStackTrace();
-		}
-		return (tab);
 	}
 }
